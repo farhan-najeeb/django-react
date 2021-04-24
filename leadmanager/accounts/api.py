@@ -43,15 +43,6 @@ class UserAPI(generics.RetrieveAPIView):
         permissions.IsAuthenticated,
     ]
     serializer_class = UserSerializer
-    # queryset = User.objects.all()
 
-    def get_objects(self):
-        print(self.request.user)
-        return self.request.user.id
-    #     queryset = self.get_queryset()
-    #     obj = get_object_or_404(queryset, user=self.request.user)
-    #     return obj
-    # def get_queryset(self):
-    #     qs = User.objects.all()
-    #     logged_in_user_profile = qs.filter(user=self.request.user)
-    #     return logged_in_user_profile
+    def get_object(self):
+        return self.request.user
